@@ -2,12 +2,12 @@ body{
     --color-primary:rgb(210, 0, 0);
     --color-white:rgb(255, 255, 255, 1);
     --color-black:rgb(0, 0, 0);
-    background: url("backgroundv2.png") no-repeat center center, linear-gradient(to right, rgb(210, 0, 0) ,rgb(0, 0, 0), rgb(0, 210, 0));
-    background-size: cover;
+    background: url("backgroundv3.png") no-repeat center center, linear-gradient(to right, rgb(210, 0, 0) ,rgb(0, 0, 0), rgb(0, 210, 0));
+    background-size: cover
 }
 .ChristmasList{
     height: 90vh;
-    width: 80vh;
+    width: 60%;
     margin-top: 5vh;
     background-color: var(--color-white);
     margin-left: auto;
@@ -40,7 +40,7 @@ body{
 
 table{
     height: 3vh;
-    width: 75vh;
+    width: 60%;
     padding-top: 2vh;
     background-color: var(--color-grey);
     margin-left: auto;

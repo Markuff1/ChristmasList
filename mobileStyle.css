@@ -1,0 +1,84 @@
+@media only screen and (max-width:1050px){
+    body{
+        --color-primary:rgb(210, 0, 0);
+        --color-white:rgb(255, 255, 255, 1);
+        --color-black:rgb(0, 0, 0);
+        background: url("backgroundv3.png") no-repeat center center, linear-gradient(to right, rgb(210, 0, 0) ,rgb(0, 0, 0), rgb(0, 210, 0));
+        background-size: cover
+    }
+       
+    .ChristmasList{
+        height: 90vh;
+        width: 90%;
+        margin-top: 4vh;
+        background-color: var(--color-white);
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 50px;
+        border-color: black;
+        border-width: 0.3vh;
+        border-style: solid;
+        overflow-y: scroll;
+    }
+
+    .ChristmasList::-webkit-scrollbar {
+        width: 12px;
+    }
+
+
+    .title{
+        color: var(--color-black);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 3vh;
+        font-size: 2.8vh;
+        font-weight: 500px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-decoration: underline;
+        
+    }
+
+    table{
+        height: 3vh;
+        width: 75%;
+        padding-top: 2vh;
+        background-color: var(--color-grey);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    td{
+        height: 3vh;
+        border-bottom: 1px solid #000000; 
+        text-align: center;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 1.5vh;
+    }
+
+    th{
+        height: 5vh;
+        border-bottom: 1px solid #000000; 
+        font-size: 2.5vh;
+        text-decoration: underline;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .hover3:hover {
+        background-color: var(--color-primary);
+        color: rgb(255, 255, 255);
+
+    a{
+        color: rgb(255, 255, 255);
+    }
+    }
+
+    a{
+        background-color: transparent;
+        text-decoration: none;
+        color: var(--color-black);
+    }
+
+}
