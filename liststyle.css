@@ -2,19 +2,20 @@ body{
     --color-primary:rgb(210, 0, 0);
     --color-white:rgb(255, 255, 255, 1);
     --color-black:rgb(0, 0, 0);
-    background: url("backgroundv3.png") no-repeat center center, linear-gradient(to right, rgb(210, 0, 0) ,rgb(0, 0, 0), rgb(0, 210, 0));
-    background-size: cover
+    background: url(backgroundv2.png) no-repeat, linear-gradient(to right, rgb(210, 0, 0) ,rgb(0, 0, 0), rgb(0, 210, 0));
+    background-size: cover;
 }
+
 .ChristmasList{
-    height: 90vh;
-    width: 60%;
-    margin-top: 5vh;
+    height: 47vw;
+    width: 50%;
+    margin-top: 2vw;
     background-color: var(--color-white);
     margin-left: auto;
     margin-right: auto;
-    border-radius: 90px;
+    border-radius: 50px;
     border-color: black;
-    border-width: 0.3vh;
+    border-width: 0.2vw;
     border-style: solid;
     overflow-y: scroll;
 }
@@ -28,10 +29,11 @@ body{
     color: var(--color-black);
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 2vh;
-    font-size: 5vh;
+    padding-top: 1.8vw;
+    font-size: 1.8vw;
     font-weight: 500px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-decoration: underline;
@@ -39,26 +41,27 @@ body{
 }
 
 table{
-    height: 3vh;
-    width: 60%;
-    padding-top: 2vh;
+    height: 55vw;
+    width: 95%;
+    padding-top: 0.8vw;
+    padding-bottom: 2vw;
     background-color: var(--color-grey);
     margin-left: auto;
     margin-right: auto;
 }
 
 td{
-    height: 3vh;
+    height: 1.5vw;
     border-bottom: 1px solid #000000; 
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 1.5vh;
+    font-size: 0.8vw;
 }
 
 th{
-    height: 5vh;
+    height: 1.4vw;
     border-bottom: 1px solid #000000; 
-    font-size: 2.5vh;
+    font-size: 1.3vw;
     text-decoration: underline;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -76,4 +79,21 @@ a{
     background-color: transparent;
     text-decoration: none;
     color: var(--color-black);
+}
+
+.hover3NEW {
+    color: rgb(0, 115, 147);
+a{
+    color: rgb(0, 115, 147);
+        
+}
+}
+
+.hover3NEW:hover {
+    background-color: var(--color-primary);
+    color: rgb(255, 255, 255);
+a{
+    color: rgb(255, 255, 255);
+    
+}
 }
