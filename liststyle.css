@@ -31,18 +31,25 @@ body{
 
 .title{
     color: var(--color-black);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 1vw;
     margin-bottom: 1vw;
-    padding-top: 1vw;
     font-size: 2.5vw;
     font-weight: 500px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-decoration: underline;
-    
+    text-decoration: underline;   
+}
+
+.export{
+    margin-top: 1.5vw;
+    margin-bottom: 1vw;
+    font-size: 2vw;
+    cursor: pointer;
+    text-align: right;
+    float: right;
+    margin-right: 2vw;
 }
 
 .subtitle{
