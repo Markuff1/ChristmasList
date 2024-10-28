@@ -1,4 +1,4 @@
-@media only screen and (max-width:1100px){
+@media only screen and (max-width:1200px){
     body{
         --color-primary:rgb(210, 0, 0);
         --color-white:rgb(255, 255, 255, 1);
@@ -14,7 +14,7 @@
         background-color: var(--color-white);
         margin-left: auto;
         margin-right: auto;
-        border-radius: 50px;
+        border-radius: 25px;
         border-color: black;
         border-width: 0.7vw;
         border-style: solid;
@@ -40,13 +40,13 @@
     }
     
     .export{
-        margin-top: 2vw;
+        margin-top: 3vw;
         margin-bottom: 1vw;
         font-size: 3vw;
         cursor: pointer;
         text-align: right;
         float: right;
-        margin-right: 5vw;
+        margin-right: 6vw;
     }
 
     .subtitle{
