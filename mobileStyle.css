@@ -1,4 +1,4 @@
-@media only screen and (max-width:1200px){
+@media only screen and (max-width:1100px){
     body{
         --color-primary:rgb(210, 0, 0);
         --color-white:rgb(255, 255, 255, 1);
@@ -33,20 +33,20 @@
         margin-right: 20%;
         margin-top: 1vw;
         margin-bottom: 1vw;
-        font-size: 6vw;
+        font-size: 4.5vw;
         font-weight: 500px;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         text-decoration: underline;   
     }
     
     .export{
-        margin-top: 1.5vw;
+        margin-top: 2vw;
         margin-bottom: 1vw;
-        font-size: 4vw;
+        font-size: 3vw;
         cursor: pointer;
         text-align: right;
         float: right;
-        margin-right: 2vw;
+        margin-right: 5vw;
     }
 
     .subtitle{
