@@ -90,22 +90,6 @@
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
 
-    .hover3:hover {
-        background-color: var(--color-primary);
-        color: rgb(255, 255, 255);
-
-    a{
-        color: rgb(255, 255, 255);
-    }
-    }
-
-
-    a{
-        background-color: transparent;
-        text-decoration: none;
-        color: var(--color-black);
-    }
-
     .time-show{
         margin: 0.1vw;
         display: flex;
