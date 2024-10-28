@@ -97,6 +97,7 @@ th{
     background-color: var(--color-primary);
     --color-Items: var(--color-white);
     color: var(--color-Items);
+    cursor: pointer;
 
     a{
         color: var(--color-Items);
@@ -133,6 +134,7 @@ a{
 .hover3NEW:hover {
     background-color: var(--color-primary);
     color: var(--color-white);
+    cursor: pointer;
 
     a{
         color: var(--color-white);
