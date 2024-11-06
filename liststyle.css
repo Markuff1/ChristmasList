@@ -1,23 +1,23 @@
 body{
     --color-primary:rgb(210, 0, 0);
+    --color-background:rgb(252, 237, 191);
     --color-white:rgb(255, 255, 255, 1);
     --color-black:rgb(0, 0, 0);
     --color-NEWItems:rgb(11, 130, 1);
     --color-NEWItemText:rgb(255, 0, 0);
     --color-Items:rgb(0, 0, 0);
-    --color-Timer:rgb(113, 0, 0);
-    background:url(backgroundv3.png),linear-gradient(to right, rgb(210, 0, 0) ,rgb(0, 0, 0), rgb(0, 210, 0));
-    background-size: cover;
+    --color-Timer:rgb(22, 92, 0);
+    background:linear-gradient(to right, rgb(210, 0, 0) ,rgb(0, 0, 0), rgb(0, 210, 0));
 }
 
 .ChristmasList{
-    height: 80vw;
-    width: 50%;
+    height: 90vh;
+    width: 70%;
     margin-top: 2vw;
-    background-color: var(--color-white);
+    background-color: var(--color-background);
     margin-left: auto;
     margin-right: auto;
-    border-radius: 50px;
+    border-radius: 25px;
     border-color: black;
     border-width: 0.2vw;
     border-style: solid;
@@ -36,16 +36,17 @@ body{
     margin-right: 20%;
     margin-top: 1vw;
     margin-bottom: 1vw;
-    font-size: 2.5vw;
-    font-weight: 500px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-decoration: underline;   
+    font-size: 4vw;
+    font-weight: bold;
+    font-family: 'Agency FB';
+    text-decoration: underline;
+    letter-spacing: 0.4vw;
 }
 
 .export{
     margin-top: 1.5vw;
     margin-bottom: 1vw;
-    font-size: 2vw;
+    font-size: 3vw;
     cursor: pointer;
     text-align: right;
     float: right;
@@ -53,16 +54,17 @@ body{
 }
 
 .subtitle{
-    color: var(--color-black);
+    color: var(--color-primary);
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 0.2vw;
-    font-size: 1.5vw;
-    font-weight: 500px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-top: 0.1vw;
+    font-size: 2vw;
+    font-weight: bold;
+    font-family: 'Agency FB';
+    letter-spacing: 0.3vw;
 }
 
 .lineBreak{
@@ -82,19 +84,21 @@ table{
 }
 
 td{
-    height: 1.5vw;
+    height: 2.5vw;
     border-bottom: 1px solid #000000;
     text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 0.8vw;
+    font-family: 'Agency FB';
+    font-weight: bold;
+    font-size: 1.5vw;
 }
 
 th{
-    height: 1.4vw;
+    height: 2.5vw;
     border-bottom: 1px solid #000000; 
-    font-size: 1.3vw;
+    font-size: 2vw;
     text-decoration: underline;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Agency FB';
+    letter-spacing: 0.1vw;
 }
 
 .hover3 {
@@ -128,8 +132,8 @@ a{
 
 .hover3NEW .Item::before {
     content: "NEW! ";
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 1000;
+    font-family: sans-serif;
+    font-weight: bolder;
     color: var(--color-NEWItemText);
 }
 
@@ -150,6 +154,7 @@ a{
 
 .time-show{
     margin: 0.1vw;
+    margin-top: 1vw;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -160,33 +165,30 @@ a{
 
 .time-show div{
     background-color: var(--color-Timer);
-    margin-top: 0.5vw;
     margin-left: auto;
     margin-right: auto;
     height: 2.3vw;
-    width: 8.5vw;
-    border-radius: 20vw;
+    width: 12vw;
+    border-radius: 0.4vw;
     color: white;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    font-family: sans-serif;
+    font-family: 'Agency FB';
     opacity: 1;
 }
 
 .time-show div span{ /* Timer Text */
-    font-family: sans-serif;
+    font-family: 'Agency FB';
     display: block;
-    font-size: 1.5vw;
-    opacity: 0.9;
-    font-weight: 1000;
+    font-size: 2vw;
+    opacity: 1;
 }
 
 .time-show div p{ /*Title text*/
     color: aliceblue;
-    margin-left: 0.6vw;
-    text-transform:capitalize;
-    font-size: 0.9vw;
-    letter-spacing: 2px;
+    margin-left: 0.4vw;
+    text-transform:lowercase;
+    font-size: 2vw;
 }
