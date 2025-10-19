@@ -1,0 +1,22 @@
+.footer{
+    background-color:var(--primary-colour);
+    height: 5vh;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+
+}
+
+
+.footerText{
+    color: var(--text-colour);
+    text-align: center;
+    padding: 0.25vh;
+    font-size: 1.5vh;
+    font-family: var(--font-1);
+    text-transform: uppercase;
+    font-weight: 700;
+}
