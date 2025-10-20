@@ -3,10 +3,12 @@ import Countdown from "../components/Countdown";
 
 interface Gift {
   name: string;
+  description?: string;
   price?: string;
   shop?: string;
   Weblink?: string;
 }
+
 
 function ChristmasList() {
   const [sortOption, setSortOption] = useState<"name" | "price" | null>(null);
@@ -15,16 +17,16 @@ function ChristmasList() {
 
   const gifts: Gift[] = [
     { name: "Fun Crocs", price: "£10.00", shop: "Crocs/Amazon", Weblink: "https://www.amazon.co.uk/s?k=Crocs&ref=nb_sb_noss" },
-    { name: "Stanley Water bottle - Cool Metalic Dark Blue (Mum knows)", price: "£40.00", shop: "Selfridges" },
+    { name: "Stanley Water bottle", description: "Cool Metalic Dark Blue (Mum knows)", price: "£40.00", shop: "Selfridges" },
     { name: "Big Gingerbread Man", price: "£10.00", shop: "John Lewis" },
     { name: "Faux fur pillow cases", price: "£40.00", shop: "Next", Weblink: "https://www.next.co.uk/style/su561052/ay5088" },
     { name: "Lego Mineral Collection", price: "£50.00", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/mineral-collection-21362" },
     { name: "Lego Italian Riviera", price: "£250.00", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/italian-riviera-21359" },
     { name: "Lego Botanical Garden", price: "£290.00", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/the-botanical-garden-21353" },
     { name: "Lego Notre-Dame de Paris", price: "£200.00", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/notre-dame-de-paris-21061" },
-    { name: "Medal holder", price: "30.00", shop: "Etsy" },
+    { name: "Medal holder", description: "Like Rob has with a place for my medals, my bib numbers and my PBs", price: "30.00", shop: "Etsy" },
     { name: "Gymshark running T-shirt and Shorts", shop: "Gymshark", Weblink: "https://www.gymshark.com" },
-    { name: "Hamper" },
+    { name: "Hamper", description: "Pringles, Sour Cherry flavoured things, Sour Skittles, Pomegranets, Grapes, Chocolate",},
     { name: "Kinder selection box", price: "£10.00", shop: "B&M" },
     { name: "Ugear Sky watcher Tourbillon Table clock", price: "£74.50", shop: "Amazon", Weblink: "https://www.amazon.co.uk/dp/B09LGTWHKF?ref=ppx_yo2ov_dt_b_fed_asin_title" },
     { name: "Jo Malone - Sandalwood & Spiced Apricot Cologne", price: "£128", shop: "Jo Malone", Weblink: "https://www.jomalone.co.uk/product/25946/139624/colognes/sandalwood-spiced-apricot-cologne" },
@@ -77,29 +79,40 @@ function ChristmasList() {
           </tr>
         </thead>
         <tbody>
-          {sortedGifts.map((gift, index) =>
-            gift.Weblink ? (
-              <a
-                key={index}
-                href={gift.Weblink}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ textDecoration: "none", color: "inherit", display: "contents" }}
-              >
-                <tr style={{ cursor: "pointer" }}>
-                  <td>{gift.name}</td>
-                  <td>{gift.price || "—"}</td>
-                  <td>{gift.shop || "—"}</td>
-                </tr>
-              </a>
-            ) : (
+          {sortedGifts.map((gift, index) => {
+            const giftNameCell = (
+              <td className="gift-name-cell">
+                <div className="gift-name">{gift.name}</div>
+                {gift.description && <div className="gift-description">{gift.description}</div>}
+              </td>
+            );
+
+            if (gift.Weblink) {
+              return (
+                <a
+                  key={index}
+                  href={gift.Weblink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: "none", color: "inherit", display: "contents" }}
+                >
+                  <tr style={{ cursor: "pointer" }}>
+                    {giftNameCell}
+                    <td>{gift.price || "—"}</td>
+                    <td>{gift.shop || "—"}</td>
+                  </tr>
+                </a>
+              );
+            }
+
+            return (
               <tr key={index}>
-                <td>{gift.name}</td>
+                {giftNameCell}
                 <td>{gift.price || "—"}</td>
                 <td>{gift.shop || "—"}</td>
               </tr>
-            )
-          )}
+            );
+          })}
         </tbody>
       </table>
     </div>
