@@ -7,6 +7,8 @@
   );
 
   --font-1: Verdana, Geneva, Tahoma, sans-serif;
+  --font-2: 'Courier New', Courier, monospace;
+  --font-3: Impact, sans-serif;
 
   --primary-colour: rgb(43, 122, 0);
   --Secondary-colour: rgb(156, 0, 0);
@@ -77,10 +79,10 @@ body {
 .list-table td {
   padding: 1.5rem;
   border-bottom: 2px solid var(--Secondary-colour);
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   text-transform: uppercase;
   font-weight: 600;
-  font-family: var(--font-1);
+  font-family: var(--font-2);
 }
 
 .list-table th {
@@ -99,9 +101,9 @@ body {
 }
 
 .list-table tr:hover {
-  background-color: var(--Secondary-colour);
+  background-color: rgb(123, 0, 0);
   color: white;
-  transform: scale(1.02);
+  transform: scale(1.05);
   transition: all 0.2s ease;
 }
 
