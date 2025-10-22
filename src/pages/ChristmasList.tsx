@@ -17,10 +17,12 @@ function ChristmasList() {
 
   const gifts: Gift[] = [
     { name: "Fun Crocs", price: "£10.00", shop: "Crocs/Amazon", Weblink: "https://www.amazon.co.uk/s?k=Crocs&ref=nb_sb_noss" },
-    { name: "Fun Socks"},
+    { name: "Pen Pot"},
     { name: "Anti Blister Running Socks", price: "£7.00", shop: "Decathlon", Weblink: "https://www.decathlon.co.uk/sports/running/running-socks" },
     { name: "Stanley Water bottle", description: "Cool Metalic Dark Blue (Mum knows)", price: "£40.00", shop: "Selfridges" },
     { name: "Big Gingerbread Man", price: "£10.00", shop: "John Lewis" },
+    { name: "Fun Socks"},
+    { name: "Fluffy Socks"},
     { name: "Faux fur pillow cases", price: "£40.00", shop: "Next", Weblink: "https://www.next.co.uk/style/su561052/ay5088" },
     { name: "ROKR Pinball Model", price: "£134.00", shop: "Amazon", Weblink: "https://www.amazon.co.uk/ROKR-Pinball-Model-3D-Build-DIY-Birthday/dp/B0C2DBQKCQ?crid=392JWBDFRJB7W&dib=eyJ2IjoiMSJ9.97DClLnDpfw_VxSffrwN5abRFbZD-6lMWMzk5-A1KRwIu2SjK_t9IR0F-v5jbcIvUO_mmapSPvVoxMRZTfBQG0CI85j5ZnTRj3j87oKfY7q_R1lsbGuI8FToQ1SbKKQVa7FbJgVMvhWZwdqSHf7PS4IbDOQykrhdRS_f9pHuB4-q-jBn69lKXmj44zKNaN4YSW2gqJ9FsWZpb7aGlK5KaEYTvTj9cDLQw_fn2Lr352xzeQ17MRbnSzxY7xuiBS1g2FQwOp6DTLX6blheHWVZ0mFUSNnYpHIZ6hJk1v67CSg.pckW0eVr3qCCjIp5o6C6vLrTVlv1WcsYGg73SVDTe7k&dib_tag=se&keywords=ROKR&qid=1761085770&sprefix=rok%2Caps%2C124&sr=8-30" },
     { name: "Lego Mineral Collection", price: "£50.00", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/mineral-collection-21362" },
@@ -42,8 +44,6 @@ function ChristmasList() {
     { name: "Calendar", description: "A4 With Pictures of Oban and Bella", price: "£25.00", shop: "Photobox", Weblink: "https://www.photobox.co.uk/personalised-calendars/wall" },
     { name: "PJ Bottoms", price: "£35.00", shop: "Next", Weblink: "https://www.next.co.uk/shop/gender-men-productaffiliation-nightwear/category-pyjamas-feat-available?dp=a&dndl=1&p=1#591.3333129882812" },
     { name: "Leather Magsafe wallet", price: "£10.00", shop: "Amazon", Weblink: "https://www.amazon.co.uk/s?k=MagSafe+wallet"},
-    { name: "PJ Bottoms"},
-    { name: "PJ Bottoms"},
     
   ];
 
