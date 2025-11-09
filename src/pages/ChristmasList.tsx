@@ -7,29 +7,31 @@ interface Gift {
   price?: string;
   shop?: string;
   Weblink?: string;
+  isNew?: boolean; // ✅ NEW FLAG
 }
 
-
 function ChristmasList() {
-  const [sortOption, setSortOption] = useState<"name" | "price" | null>(null);
+  const [sortOption, setSortOption] = useState<"name" | "price" | "new" | null>(null);
 
   const christmasDate = new Date(`${new Date().getFullYear()}-12-25T00:00:00`);
 
   const gifts: Gift[] = [
-    { name: "Fun Crocs", price: "£10.00", shop: "Crocs/Amazon", Weblink: "https://www.amazon.co.uk/s?k=Crocs&ref=nb_sb_noss" },
-    { name: "Pen Pot"},
-    { name: "Anti Blister Running Socks", price: "£7.00", shop: "Decathlon", Weblink: "https://www.decathlon.co.uk/sports/running/running-socks" },
-    { name: "Stanley Water bottle", description: "Cool Metalic Dark Blue (Mum knows)", price: "£40.00", shop: "Selfridges" },
-    { name: "Big Gingerbread Man", price: "£10.00", shop: "John Lewis" },
-    { name: "Fun Socks"},
-    { name: "Fluffy Socks"},
+    { name: "Medal holder", description: "Like Rob has with a place for my medals, my bib numbers and my PBs", price: "30.00", shop: "Etsy" },
     { name: "Faux fur pillow cases", price: "£40.00", shop: "Next", Weblink: "https://www.next.co.uk/style/su561052/ay5088" },
     { name: "ROKR Pinball Model", price: "£134.00", shop: "Amazon", Weblink: "https://www.amazon.co.uk/ROKR-Pinball-Model-3D-Build-DIY-Birthday/dp/B0C2DBQKCQ?crid=392JWBDFRJB7W&dib=eyJ2IjoiMSJ9.97DClLnDpfw_VxSffrwN5abRFbZD-6lMWMzk5-A1KRwIu2SjK_t9IR0F-v5jbcIvUO_mmapSPvVoxMRZTfBQG0CI85j5ZnTRj3j87oKfY7q_R1lsbGuI8FToQ1SbKKQVa7FbJgVMvhWZwdqSHf7PS4IbDOQykrhdRS_f9pHuB4-q-jBn69lKXmj44zKNaN4YSW2gqJ9FsWZpb7aGlK5KaEYTvTj9cDLQw_fn2Lr352xzeQ17MRbnSzxY7xuiBS1g2FQwOp6DTLX6blheHWVZ0mFUSNnYpHIZ6hJk1v67CSg.pckW0eVr3qCCjIp5o6C6vLrTVlv1WcsYGg73SVDTe7k&dib_tag=se&keywords=ROKR&qid=1761085770&sprefix=rok%2Caps%2C124&sr=8-30" },
     { name: "Lego Mineral Collection", price: "£50.00", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/mineral-collection-21362" },
     { name: "Lego Italian Riviera", price: "£250.00", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/italian-riviera-21359" },
     { name: "Lego Botanical Garden", price: "£290.00", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/the-botanical-garden-21353" },
     { name: "Lego Notre-Dame de Paris", price: "£200.00", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/notre-dame-de-paris-21061" },
-    { name: "Medal holder", description: "Like Rob has with a place for my medals, my bib numbers and my PBs", price: "30.00", shop: "Etsy" },
+    { name: "Running Headphones/Earphones", description: "Better ones for running as my airpods keep falling out", isNew: true,},
+    { name: "Big Popcorn bottle", price: "£25.00", shop: "Next", Weblink: "https://www.next.co.uk/shop/brand-popcornkitchen-0?p=1&msockid=30c931aac1e867da378b2539c5e8656e#58", isNew: true, },
+    { name: "Fun Crocs", description: "Size 12/13", price: "£10.00", shop: "Crocs/Amazon", Weblink: "https://www.amazon.co.uk/s?k=Crocs&ref=nb_sb_noss" },
+    { name: "Pen Pot"},
+    { name: "Anti Blister Running Socks", price: "£7.00", shop: "Decathlon", Weblink: "https://www.decathlon.co.uk/sports/running/running-socks" },
+    { name: "Stanley Water bottle", description: "Cool Metalic Dark Blue (Mum knows)", price: "£40.00", shop: "Selfridges" },
+    { name: "Big Gingerbread Man", price: "£10.00", shop: "John Lewis" },
+    { name: "Fun Socks"},
+    { name: "Fluffy Socks"},
     { name: "Gymshark running T-shirt and Shorts", shop: "Gymshark", Weblink: "https://www.gymshark.com" },
     { name: "Hamper", description: "Pringles, Sour Cherry flavoured things, Sour Skittles, Pomegranets, Grapes, Chocolate, Lidl Jaffa Cakes",},
     { name: "Kinder selection box", price: "£10.00", shop: "B&M" },
@@ -47,14 +49,21 @@ function ChristmasList() {
     
   ];
 
+
   // Calculate total from numeric prices only
   const total = gifts.reduce((sum, gift) => {
     const match = gift.price?.match(/£([\d.]+)/);
     return match ? sum + parseFloat(match[1]) : sum;
   }, 0);
 
-  // Sort copy of gifts (without mutating)
-  const sortedGifts = [...gifts].sort((a, b) => {
+
+   let displayedGifts: Gift[] = [...gifts];
+
+  if (sortOption === "new") {
+    displayedGifts = displayedGifts.filter(gift => gift.isNew);
+  }
+
+  displayedGifts = displayedGifts.sort((a, b) => {
     if (sortOption === "name") {
       return a.name.localeCompare(b.name);
     }
@@ -76,6 +85,7 @@ function ChristmasList() {
       <div style={{ marginBottom: "1rem", display: "flex", gap: "1rem" }}>
         <button onClick={() => setSortOption("name")}>Sort A–Z</button>
         <button onClick={() => setSortOption("price")}>Sort by Price</button>
+        <button onClick={() => setSortOption("new")}>Show New Only</button>
         <button onClick={() => setSortOption(null)}>Reset</button>
       </div>
 
@@ -88,10 +98,13 @@ function ChristmasList() {
           </tr>
         </thead>
         <tbody>
-          {sortedGifts.map((gift, index) => {
+          {displayedGifts.map((gift, index) => {
             const giftNameCell = (
               <td className="gift-name-cell">
-                <div className="gift-name">{gift.name}</div>
+                <div className="gift-name">
+                  {gift.name}
+                  {gift.isNew && <span className="new-tag">NEW</span>}
+                </div>
                 {gift.description && <div className="gift-description">{gift.description}</div>}
               </td>
             );

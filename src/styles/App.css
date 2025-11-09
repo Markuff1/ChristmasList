@@ -11,8 +11,10 @@
   --font-3: Impact, sans-serif;
 
   --primary-colour: rgb(43, 122, 0);
-  --Secondary-colour: rgb(156, 0, 0);
+  --Secondary-colour: rgb(199, 0, 0);
+  --tertiary-colour: rgb(0, 255, 183);
   --text-colour: rgb(255, 255, 255);
+  --textv2-colour:rgb(0, 100, 25);
 }
 
 body {
@@ -174,6 +176,40 @@ body {
   opacity: 1;
 }
 
+.new-tag {
+  margin-left: 0.5rem;
+  background-color: var(--tertiary-colour);
+  color: var(--textv2-colour);
+  font-size: 0.90rem;
+  font-weight: 900;
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.4rem;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  box-shadow: 0 2px 4px rgb(127, 0, 0);
+}
+
+@keyframes newPulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.new-tag {
+  animation: newPulse 1.6s ease-in-out infinite;
+}
+
+
+/* ✅ Make name + NEW tag align cleanly */
+.gift-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+
 /* 📱 Mobile Responsiveness */
 @media (max-width: 768px) {
   .list-table {
@@ -215,4 +251,17 @@ body {
     margin-top: -4rem;
     font-weight: 400;
   }
+
+  .new-tag {
+    font-size: 0.55rem;
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.35rem;
+    margin-left: 0.3rem;
+  }
+
+  .gift-name {
+    gap: 0.3rem;
+  }
+
 }
+
