@@ -219,12 +219,12 @@ body {
 
   .list-table th,
   .list-table td {
-    padding: 0.5rem;
+    padding: 0.6rem;
     font-size: 0.8rem;
   }
 
   .gift-name {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .gift-description {
@@ -261,6 +261,12 @@ body {
 
   .gift-name {
     gap: 0.3rem;
+  }
+
+  .list-page button {
+    border-radius: 5px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
   }
 
 }
