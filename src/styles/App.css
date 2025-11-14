@@ -118,7 +118,7 @@ body {
 
 /* 🎄 Sorting Buttons */
 .list-page button {
-  background: linear-gradient(to bottom, var(--primary-colour), #2e8b00);
+  background: linear-gradient(to bottom, var(--Secondary-colour), #7e0b00);
   color: white;
   border: none;
   border-radius: 8px;
@@ -128,11 +128,11 @@ body {
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.25s ease;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 8px rgb(0, 0, 0);
 }
 
 .list-page button:hover {
-  background: linear-gradient(to bottom, var(--Secondary-colour), #a30000);
+  background: linear-gradient(to bottom, var(--tertiary-colour), rgb(0, 151, 108));
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }

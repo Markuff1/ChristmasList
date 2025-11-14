@@ -7,15 +7,18 @@ interface Gift {
   price?: string;
   shop?: string;
   Weblink?: string;
-  isNew?: boolean; // ✅ NEW FLAG
+  isNew?: boolean;
 }
 
 function ChristmasList() {
-  const [sortOption, setSortOption] = useState<"name" | "price" | "new" | null>(null);
+  const [sortOption, setSortOption] =
+    useState<"name" | "price" | "new" | "Lego" | null>(null);
 
-  const christmasDate = new Date(`${new Date().getFullYear()}-12-25T00:00:00`);
+  const christmasDate = new Date(
+    `${new Date().getFullYear()}-12-25T00:00:00`
+  );
 
-  const gifts: Gift[] = [
+ const gifts: Gift[] = [
     { name: "Medal holder", description: "Like Rob has with a place for my medals, my bib numbers and my PBs", price: "30.00", shop: "Etsy" },
     { name: "Faux fur pillow cases", price: "£40.00", shop: "Next", Weblink: "https://www.next.co.uk/style/su561052/ay5088" },
     { name: "ROKR Pinball Model", price: "£134.00", shop: "Amazon", Weblink: "https://www.amazon.co.uk/ROKR-Pinball-Model-3D-Build-DIY-Birthday/dp/B0C2DBQKCQ?crid=392JWBDFRJB7W&dib=eyJ2IjoiMSJ9.97DClLnDpfw_VxSffrwN5abRFbZD-6lMWMzk5-A1KRwIu2SjK_t9IR0F-v5jbcIvUO_mmapSPvVoxMRZTfBQG0CI85j5ZnTRj3j87oKfY7q_R1lsbGuI8FToQ1SbKKQVa7FbJgVMvhWZwdqSHf7PS4IbDOQykrhdRS_f9pHuB4-q-jBn69lKXmj44zKNaN4YSW2gqJ9FsWZpb7aGlK5KaEYTvTj9cDLQw_fn2Lr352xzeQ17MRbnSzxY7xuiBS1g2FQwOp6DTLX6blheHWVZ0mFUSNnYpHIZ6hJk1v67CSg.pckW0eVr3qCCjIp5o6C6vLrTVlv1WcsYGg73SVDTe7k&dib_tag=se&keywords=ROKR&qid=1761085770&sprefix=rok%2Caps%2C124&sr=8-30" },
@@ -23,6 +26,12 @@ function ChristmasList() {
     { name: "Lego Italian Riviera", price: "£250.00", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/italian-riviera-21359" },
     { name: "Lego Botanical Garden", price: "£290.00", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/the-botanical-garden-21353" },
     { name: "Lego Notre-Dame de Paris", price: "£200.00", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/notre-dame-de-paris-21061" },
+    { name: "Lego Statue of Liberty", price: "89.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/statue-of-liberty-21042", isNew: true, },
+    { name: "Tropical Aquarium", price: "399.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/tropical-aquarium-10366", isNew: true, },
+    { name: "Lego Natural History Museaum", price: "259.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/natural-history-museum-10326", isNew: true, },
+    { name: "Lego Neuschwanstein Castle", price: "239.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/neuschwanstein-castle-21063", isNew: true, },
+    { name: "Lego Tudor Corner", price: "199.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/tudor-corner-10350", isNew: true, },
+    { name: "Lego Jazz Club", price: "199.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/jazz-club-10312", isNew: true, },
     { name: "Running Headphones/Earphones", description: "Better ones for running as my airpods keep falling out", isNew: true,},
     { name: "Big Popcorn bottle", price: "£25.00", shop: "Next", Weblink: "https://www.next.co.uk/shop/brand-popcornkitchen-0?p=1&msockid=30c931aac1e867da378b2539c5e8656e#58", isNew: true, },
     { name: "Fun Crocs", description: "Size 12/13", price: "£10.00", shop: "Crocs/Amazon", Weblink: "https://www.amazon.co.uk/s?k=Crocs&ref=nb_sb_noss" },
@@ -49,20 +58,24 @@ function ChristmasList() {
     
   ];
 
-
   // Calculate total from numeric prices only
   const total = gifts.reduce((sum, gift) => {
-    const match = gift.price?.match(/£([\d.]+)/);
+    const match = gift.price?.match(/£?([\d.]+)/);
     return match ? sum + parseFloat(match[1]) : sum;
   }, 0);
 
+  let displayedGifts: Gift[] = [...gifts];
 
-   let displayedGifts: Gift[] = [...gifts];
-
+  // Apply filters
   if (sortOption === "new") {
     displayedGifts = displayedGifts.filter(gift => gift.isNew);
   }
 
+  if (sortOption === "Lego") {
+    displayedGifts = displayedGifts.filter(gift => gift.shop === "Lego");
+  }
+
+  // Sorting logic
   displayedGifts = displayedGifts.sort((a, b) => {
     if (sortOption === "name") {
       return a.name.localeCompare(b.name);
@@ -81,11 +94,11 @@ function ChristmasList() {
 
       <h2 className="total-price">🎁 Total: £{total.toFixed(2)}</h2>
 
-      {/* Sorting Controls */}
       <div style={{ marginBottom: "1rem", display: "flex", gap: "1rem" }}>
         <button onClick={() => setSortOption("name")}>Sort A–Z</button>
         <button onClick={() => setSortOption("price")}>Sort by Price</button>
         <button onClick={() => setSortOption("new")}>Show New Only</button>
+        <button onClick={() => setSortOption("Lego")}>Lego</button>
         <button onClick={() => setSortOption(null)}>Reset</button>
       </div>
 
@@ -105,7 +118,9 @@ function ChristmasList() {
                   {gift.name}
                   {gift.isNew && <span className="new-tag">NEW</span>}
                 </div>
-                {gift.description && <div className="gift-description">{gift.description}</div>}
+                {gift.description && (
+                  <div className="gift-description">{gift.description}</div>
+                )}
               </td>
             );
 
