@@ -19,12 +19,6 @@ function BirthdayList() {
   );
 
  const gifts: Gift[] = [
-    { name: "Lego Ford Model T", price: "£119.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/ford-model-t-11376", isNew: true, },
-    { name: "Lego Rocking Plants", price: "£17.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/rocking-plants-11506", isNew: true, },
-    { name: "Lego Hibiscus", price: "£59.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/hibiscus-10372", isNew: true, },
-    { name: "Lego Rocking Plants", price: "£24.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/flowering-cactus-11509", isNew: true, },
-    { name: "Lego Shopping Street", price: "£229.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/shopping-street-11371", isNew: true, },
-    { name: "Lego River Steamboat", price: "£289.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/river-steamboat-21356", isNew: true, },
     { name: "Running Hydration Vest", description: "Might be a better one but something good for Marathons and long runs", price: "~£50", shop: "Decathlon", Weblink: "https://www.decathlon.co.uk/p/unisex-running-competition-hydration-gilet-kiprun-race-900-3l-black/352243/c382m8862851", isNew: true, },
     { name: "SHOKZ Bone Conduction Headphones", price: "£135", shop: "Amazon", Weblink: "https://www.amazon.co.uk/SHOKZ-Conduction-Headphones-Cancelling-Waterproof-Black/dp/B0D2HKQWHX?crid=25WF0W38ZPC3W&dib=eyJ2IjoiMSJ9.2okRs93yDSkztk5C9O4QEgQZrb4LaPw4SIL_jZR4QOkj2_6-iVHO_jLjKGbkTeq5OaA0xgYUQ0J6AqPhLG0l3Kxgjuu8IvcEpjzAoQ3LPkdTH7pTTp0D0QRJyB431kzNu0B1YMPt-67C4lNz3CYPng8DJx6pzcI98COhlN7WiavFDnkC6Unao9vqrSc2ZCdcytIXkG95kxzs-JmZ7-IrYOlO0JsH0W5EDz4eu2KOLfQ.5C-Em2COImIvkEYXtlDQ7xvUs5ofNNJlhiumSQIadfE&dib_tag=se&keywords=bone%2Bconduction%2Bheadphones&qid=1776640621&sprefix=bone%2Bcondu%2Caps%2C254&sr=8-7&ufe=app_do%3Aamzn1.fos.d7e5a2de-8759-4da3-993c-d11b6e3d217f&th=1", isNew: true, },
     { name: "Fun socks", price: "", shop: "", Weblink: "", isNew: true, },
@@ -39,6 +33,12 @@ function BirthdayList() {
     { name: "Desk Lamp ", description: "For under my TV", price: "£10", shop: "Dunelm", Weblink: "https://www.dunelm.com/category/lighting/table-and-desk-lamps", isNew: true, },
     { name: "Govee TV Backlight", price: "£80", shop: "Amazon", Weblink: "https://www.amazon.co.uk/Govee-Backlight-Fish-eye-Correction-Function/dp/B0CL4KNPT9?crid=3ASVSN6QB86U7&dib=eyJ2IjoiMSJ9.QhZs8Uru1RY8anGAnUXBPcWbkZNDT4bkZSuHCAmXWigBbCXehzhYFVSREjXUOHArNvz46YX2tfk-2HOCI9eQlRATZnrKgfYxtPBSNYf5C_bi4ZCROk4syJIy_WaktEAfAmgpvj-KQT_Bga74VtvlwT22alehNyTixl47JHaTkD_IAYvRVnima4GGQsfka4wMl_hIgS9UXi47hATYDYzC8jMuUAH4_U2F2sS0yFaSjKYttp6Hc7hFX1A8Y1uZYvIsafMgdkusSn4pd7ctOhwF1IsF18eEjFMJbsxpQd68yqg.kEAMDjq9v3PsaZIyGhtcVPLtpq9iGeVAr3cigy--ex4&dib_tag=se&keywords=Grovee&qid=1776644105&sprefix=grove%2Caps%2C269&sr=8-8&th=1", isNew: true, },
     { name: "Govee Light Bars", price: "£70", shop: "Amazon", Weblink: "https://www.amazon.co.uk/Govee-Backlight-Multiple-Placement-Assistant/dp/B0BX25BSD1?dib=eyJ2IjoiMSJ9.QhZs8Uru1RY8anGAnUXBPcWbkZNDT4bkZSuHCAmXWigBbCXehzhYFVSREjXUOHArNvz46YX2tfk-2HOCI9eQlRATZnrKgfYxtPBSNYf5C_bi4ZCROk4syJIy_WaktEAfAmgpvj-KQT_Bga74VtvlwT22alehNyTixl47JHaTkD_IAYvRVnima4GGQsfka4wMl_hIgS9UXi47hATYDYzC8jMuUAH4_U2F2sS0yFaSjKYttp6Hc7hFX1A8Y1uZYvIsafMgdkusSn4pd7ctOhwF1IsF18eEjFMJbsxpQd68yqg.kEAMDjq9v3PsaZIyGhtcVPLtpq9iGeVAr3cigy--ex4&dib_tag=se&keywords=Grovee&qid=1776644339&sr=8-9&th=1", isNew: true, },
+    { name: "Lego Ford Model T", price: "£119.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/ford-model-t-11376", isNew: true, },
+    { name: "Lego Rocking Plants", price: "£17.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/rocking-plants-11506", isNew: true, },
+    { name: "Lego Hibiscus", price: "£59.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/hibiscus-10372", isNew: true, },
+    { name: "Lego Rocking Plants", price: "£24.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/flowering-cactus-11509", isNew: true, },
+    { name: "Lego Shopping Street", price: "£229.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/shopping-street-11371", isNew: true, },
+    { name: "Lego River Steamboat", price: "£289.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/river-steamboat-21356", isNew: true, },
     /*{ name: "", price: "", shop: "", Weblink: "", isNew: true, },*/
 
   ];
