@@ -1,28 +1,47 @@
 import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function Header() {
   const location = useLocation();
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  // Dynamically set title + emojis based on the current route
-  const isBirthday = location.pathname === "/birthday";
+  const isBirthday =
+    location.pathname === "/" || location.pathname === "/birthday";
 
   const title = isBirthday
     ? "🎉 My Birthday List 🎂"
     : "🎄 My Christmas List 🎄";
 
-  return (
-    <header className="header">
-      <h1>{title}</h1>
+  // Trigger animation on route change
+  useEffect(() => {
+    setIsAnimating(true);
+    const timeout = setTimeout(() => setIsAnimating(false), 300);
+    return () => clearTimeout(timeout);
+  }, [location.pathname]);
 
-      <nav>
-        <Link to="/" className={location.pathname === "/" ? "active" : ""}>
-          Christmas List
-        </Link>
+  return (
+    <header className={`header ${isBirthday ? "birthday" : "christmas"}`}>
+      <h1 className={`title ${isAnimating ? "fade" : ""}`}>{title}</h1>
+
+      <nav className="nav">
+        <div
+          className={`indicator ${
+            isBirthday ? "left" : "right"
+          }`}
+        />
+
         <Link
-          to="/birthday"
-          className={location.pathname === "/birthday" ? "active" : ""}
+          to="/"
+          className={isBirthday ? "active" : ""}
         >
           Birthday List
+        </Link>
+
+        <Link
+          to="/Christmas"
+          className={!isBirthday ? "active" : ""}
+        >
+          Christmas List
         </Link>
       </nav>
     </header>

@@ -1,26 +1,51 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import ChristmasList from "./pages/ChristmasList.tsx";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+
+import ChristmasList from "./pages/ChristmasList";
+import BirthdayList from "./pages/BirthdayList";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
 import "./styles/App.css";
 import "./styles/Footer.css";
 import "./styles/Header.css";
-import BirthdayList from "./pages/BirthdayList.tsx";
-import Header from "./components/Header.tsx";
-import Footer from "./components/Footer.tsx";
 
+/* 🔥 This component can read the route */
+function AppContent() {
+  const location = useLocation();
+
+  // 🎯 Decide theme based on URL
+  const isChristmas = location.pathname.toLowerCase().includes("christmas");
+
+  const themeClass = isChristmas ? "christmas-theme" : "bday-theme";
+
+  return (
+    <div className={`app-container ${themeClass}`}>
+      <Header />
+
+      <main className={`main-content ${themeClass}`}>
+        <Routes>
+          <Route path="/" element={<BirthdayList />} />
+          <Route path="/Christmas" element={<ChristmasList />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
+
+/* ✅ Router wraps everything */
 function App() {
   return (
     <Router>
-      <div className="app-container">
-        <Header />
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<ChristmasList />} />
-            <Route path="/birthday" element={<BirthdayList />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <AppContent />
     </Router>
   );
 }
