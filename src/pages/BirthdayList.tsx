@@ -36,7 +36,7 @@ function BirthdayList() {
     { name: "Lego Ford Model T", price: "£119.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/ford-model-t-11376", isNew: true, },
     { name: "Lego Rocking Plants", price: "£17.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/rocking-plants-11506", isNew: true, },
     { name: "Lego Hibiscus", price: "£59.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/hibiscus-10372", isNew: true, },
-    { name: "Lego Rocking Plants", price: "£24.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/flowering-cactus-11509", isNew: true, },
+    { name: "Lego Flowering Cactus", price: "£24.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/flowering-cactus-11509", isNew: true, },
     { name: "Lego Shopping Street", price: "£229.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/shopping-street-11371", isNew: true, },
     { name: "Lego River Steamboat", price: "£289.99", shop: "Lego", Weblink: "https://www.lego.com/en-gb/product/river-steamboat-21356", isNew: true, },
     /*{ name: "", price: "", shop: "", Weblink: "", isNew: true, },*/
