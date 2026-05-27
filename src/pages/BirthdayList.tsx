@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Countdown from "../components/Countdown";
-import * as XLSX from "xlsx";
+import * as XLSX from "xlsx-js-style";
 
 interface Gift {
   name: string;
@@ -20,6 +20,12 @@ function BirthdayList() {
   );
 
   const gifts: Gift[] = [
+    {
+      name: "New Graphics Card",
+      price: "£0",
+      shop: "James Nixon's Shop",
+      isNew: true,
+    },
     {
       name: "Candles",
       price: "~£10",
@@ -62,7 +68,7 @@ function BirthdayList() {
     { name: "Fun socks" },
     {
       name: "Hamper",
-      description: "Pringles, Watermelon, Grapes, Kinder Stuff.....",
+      description: "Pringles, Watermelon, Grapes, Kinder Stuff, Chocolate fingers, Oreos.....",
     },
     {
       name: "Magsafe Wallet",
@@ -84,8 +90,12 @@ function BirthdayList() {
         "https://desktronic.co.uk/products/height-adjustable-desk-homepro",
     },
     {
-      name: "2 Dark Shelves",
-      description: "For above my bed",
+      name: "2 x Shelf",
+      price: "£13",
+      shop: "Ikea",
+      Weblink:
+        "https://www.ikea.com/gb/en/p/lack-wall-shelf-white-90282180/",
+      isNew: true,
     },
     {
       name: "MOVA Globe",
@@ -104,10 +114,11 @@ function BirthdayList() {
     {
       name: "Desk Lamp",
       description: "For under my TV",
-      price: "£10",
-      shop: "Dunelm",
+      price: "£19",
+      shop: "Ikea",
       Weblink:
-        "https://www.dunelm.com/category/lighting/table-and-desk-lamps",
+        "https://www.ikea.com/gb/en/p/-10096375",
+      isNew: true,
     },
     {
       name: "Govee TV Backlight",
@@ -122,6 +133,20 @@ function BirthdayList() {
       shop: "Amazon",
       Weblink:
         "https://www.amazon.co.uk/Govee-Backlight-Multiple-Placement-Assistant/dp/B0BX25BSD1",
+    },
+    {
+      name: "Lego Bike",
+      price: "£109.99",
+      shop: "Lego",
+      Weblink: "https://www.lego.com/en-gb/product/road-bike-11380",
+      isNew: true,
+    },
+    {
+      name: "PAC-MAN Arcade",
+      price: "£229.99",
+      shop: "Lego",
+      Weblink: "https://www.lego.com/en-gb/product/pac-man-arcade-10323",
+      isNew: true,
     },
     {
       name: "Lego Ford Model T",
@@ -197,34 +222,164 @@ function BirthdayList() {
     return 0;
   });
 
-  const downloadExcel = () => {
-    const exportData = displayedGifts.map((gift) => ({
-      Name: gift.name,
-      Description: gift.description || "",
-      Price: gift.price || "",
-      Shop: gift.shop || "",
-      Link: gift.Weblink || "",
-    }));
+const downloadExcel = () => {
+  const data = [
+    ["Mark's List"],
+    [
+      "#",
+      "Name",
+      "Description",
+      "New item?",
+      "Price",
+      "Shop",
+    ],
+  ];
 
-    const worksheet = XLSX.utils.json_to_sheet(exportData);
+  displayedGifts.forEach((gift, index) => {
+    data.push([
+      index + 1,
+      gift.name || "",
+      gift.description || "",
+      gift.isNew ? "Yes" : "",
+      gift.price || "",
+      gift.shop || "",
+    ]);
+  });
 
-    worksheet["!cols"] = [
-      { wch: 30 },
-      { wch: 40 },
-      { wch: 15 },
-      { wch: 20 },
-      { wch: 50 },
-    ];
+  const worksheet = XLSX.utils.aoa_to_sheet(data);
 
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(
-      workbook,
-      worksheet,
-      "Birthday List"
-    );
+  // Merge title row
+  worksheet["!merges"] = [
+    {
+      s: { r: 0, c: 0 },
+      e: { r: 0, c: 5 },
+    },
+  ];
 
-    XLSX.writeFile(workbook, "Birthday_List.xlsx");
+  // Column widths
+  worksheet["!cols"] = [
+    { wch: 6 },   // #
+    { wch: 30 },  // Name
+    { wch: 45 },  // Description
+    { wch: 15 },  // New item
+    { wch: 12 },  // Price
+    { wch: 25 },  // Shop
+  ];
+
+  // Row heights
+  worksheet["!rows"] = [
+    { hpt: 35 }, // Title
+    { hpt: 25 }, // Headers
+    ...displayedGifts.map(() => ({ hpt: 40 })),
+  ];
+
+  // ===== TITLE =====
+  worksheet["A1"].s = {
+    font: {
+      bold: true,
+      sz: 22,
+    },
+    alignment: {
+      horizontal: "center",
+      vertical: "center",
+    },
+    fill: {
+      fgColor: { rgb: "89A9D6" },
+    },
   };
+
+  // ===== HEADER STYLING =====
+  const headerCells = [
+    "A2",
+    "B2",
+    "C2",
+    "D2",
+    "E2",
+    "F2",
+  ];
+
+  headerCells.forEach((cell) => {
+    worksheet[cell].s = {
+      font: {
+        bold: true,
+        sz: 12,
+      },
+      alignment: {
+        horizontal: "center",
+        vertical: "center",
+      },
+      fill: {
+        fgColor: { rgb: "B8C9E3" },
+      },
+      border: {
+        top: {
+          style: "thin",
+          color: { rgb: "CCCCCC" },
+        },
+        bottom: {
+          style: "thin",
+          color: { rgb: "CCCCCC" },
+        },
+      },
+    };
+  });
+
+  // ===== DATA ROWS =====
+  for (let row = 3; row <= displayedGifts.length + 2; row++) {
+    ["A", "B", "C", "D", "E", "F"].forEach((col) => {
+      const cell = worksheet[`${col}${row}`];
+
+      if (!cell) return;
+
+      cell.s = {
+        alignment: {
+          horizontal: "center",
+          vertical: "center",
+          wrapText: true,
+        },
+        font: {
+          sz: 11,
+        },
+        border: {
+          bottom: {
+            style: "thin",
+            color: { rgb: "E5E5E5" },
+          },
+        },
+      };
+    });
+
+    // Description column styling
+    worksheet[`C${row}`].s = {
+      alignment: {
+        horizontal: "center",
+        vertical: "center",
+        wrapText: true,
+      },
+      font: {
+        sz: 10,
+        italic: true,
+        color: { rgb: "666666" },
+      },
+      border: {
+        bottom: {
+          style: "thin",
+          color: { rgb: "E5E5E5" },
+        },
+      },
+    };
+  }
+
+  const workbook = XLSX.utils.book_new();
+
+  XLSX.utils.book_append_sheet(
+    workbook,
+    worksheet,
+    "Birthday List"
+  );
+
+  XLSX.writeFile(workbook, "Birthday_List.xlsx");
+};
 
   return (
     <div className="list-page">
