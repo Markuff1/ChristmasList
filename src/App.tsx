@@ -30,9 +30,10 @@ function AppContent() {
 
       <main className={`main-content ${themeClass}`}>
         <Routes>
-          <Route path="/" element={<BirthdayList />} />
+          <Route path="/" element={<Navigate to="/Christmas" replace />} />
+          <Route path="/Birthday" element={<BirthdayList />} />
           <Route path="/Christmas" element={<ChristmasList />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="/Christmas" replace />} />
         </Routes>
       </main>
 

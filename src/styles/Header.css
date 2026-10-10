@@ -1,11 +1,10 @@
 .header {
-  background-color: var(--primary-colour);
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-primary-dark));
   color: white;
-  height: 8rem;
   width: 100%;
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
+  padding: 1.25rem 1rem;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -14,6 +13,7 @@
   align-items: center;
   transition: background 0.4s ease;
   z-index: 1000;
+  flex-shrink: 0;
 }
 
 /* Title animation */
@@ -34,7 +34,8 @@
   position: relative;
   display: flex;
   padding: 2px 10px;
-  width: 300px;
+  width: max-content;
+  min-width: 300px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(6px);
@@ -45,7 +46,8 @@
 .nav a {
   flex: 1;
   text-align: center;
-  padding: 0.4rem 0;
+  white-space: nowrap;
+  padding: 0.4rem 1.25rem;
   color: white;
   text-decoration: none;
   font-weight: 500;
@@ -61,7 +63,7 @@
   left: 0;
   height: 3px;
   width: 50%;
-  background: var(--tertiary-colour);
+  background: var(--color-accent);
   border-radius: 2px;
   transition: transform 0.35s ease;
 }
@@ -76,21 +78,17 @@
 
 .nav a:hover {
   transform: scale(1.1);
-  color: #ffeb3b;
+  color: var(--color-accent);
 }
 
 .nav a.active {
   font-weight: 700;
-  background-color: var(--primary-colour-light);
+  background-color: var(--color-primary-light);
   border-radius: 10px;
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-  .header {
-    height: 6rem;
-  }
-
   .title {
     font-size: 1.2rem;
   }

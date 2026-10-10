@@ -6,7 +6,7 @@ function Header() {
   const [isAnimating, setIsAnimating] = useState(false);
 
   const isBirthday =
-    location.pathname === "/" || location.pathname === "/birthday";
+    location.pathname.toLowerCase() === "/birthday";
 
   const title = isBirthday
     ? "🎉 My Birthday List 🎂"
@@ -31,7 +31,7 @@ function Header() {
         />
 
         <Link
-          to="/"
+          to="/Birthday"
           className={isBirthday ? "active" : ""}
         >
           Birthday List

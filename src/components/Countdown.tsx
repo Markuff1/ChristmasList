@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { getNextOccurrence, isEventToday } from "../utils/eventDate";
 
 interface CountdownProps {
-  targetDate: Date;
-  label?: string;
+  eventMonth: number;
+  eventDay: number;
+  label: string;
 }
 
 interface TimeLeft {
@@ -12,41 +14,31 @@ interface TimeLeft {
   seconds: number;
 }
 
-function Countdown({ targetDate, label }: CountdownProps) {
-  const [time, setTime] = useState<TimeLeft>({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+function getTimeLeft(target: Date): TimeLeft {
+  const diff = Math.max(0, target.getTime() - Date.now());
+  return {
+    days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((diff / (1000 * 60)) % 60),
+    seconds: Math.floor((diff / 1000) % 60),
+  };
+}
 
-  const [isComplete, setIsComplete] = useState(false);
+function Countdown({ eventMonth, eventDay, label }: CountdownProps) {
+  const [now, setNow] = useState(() => new Date());
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const diff = targetDate.getTime() - now;
-
-      if (diff <= 0) {
-        setIsComplete(true);
-        clearInterval(timer);
-        return;
-      }
-
-      setTime({
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((diff / (1000 * 60)) % 60),
-        seconds: Math.floor((diff / 1000) % 60),
-      });
-    }, 1000);
-
+    const timer = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(timer);
-  }, [targetDate]);
+  }, []);
+
+  const isToday = isEventToday(eventMonth, eventDay, now);
+  const target = getNextOccurrence(eventMonth, eventDay, now);
+  const time = getTimeLeft(target);
 
   const format = (num: number) => String(num).padStart(2, "0");
 
-  if (isComplete) {
+  if (isToday) {
     return (
       <div className="countdown">
         <h3>{label} is here! 🎉</h3>

@@ -1,22 +1,27 @@
-.footer{
-    background-color:var(--primary-colour);
-    height: 5vh;
+.footer {
+    background-color: var(--color-primary-dark);
     width: 100%;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    z-index: 1000;
-
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 0.5rem;
 }
 
-
-.footerText{
-    color: var(--text-colour);
+.footerText {
+    color: var(--color-text);
     text-align: center;
-    padding: 0.25vh;
-    font-size: 1.5vh;
-    font-family: var(--font-1);
+    padding: 0 0.5rem;
+    margin: 0;
+    font-size: 0.8rem;
+    font-family: var(--font-body);
     text-transform: uppercase;
     font-weight: 700;
+    opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+    .footerText {
+        font-size: 0.65rem;
+    }
 }

@@ -1,67 +1,90 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
 :root {
-  --background: linear-gradient(
-    to bottom,
-    rgb(45, 45, 45),
-    var(--primary-colour),
-    var(--Secondary-colour)
-  );
+  --font-body: Verdana, Geneva, Tahoma, sans-serif;
 
-  --font-1: Verdana, Geneva, Tahoma, sans-serif;
-  --font-2: "Courier New", Courier, monospace;
-  --font-3: Impact, sans-serif;
+  --color-text: #ffffff;
+  --color-accent: #ffce33;
+  --color-accent-dark: #b8860b;
+  --color-text-on-accent: #3a2c00;
 
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+
+  --shadow-sm: 0 3px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.45);
 }
 
 .christmas-theme {
-  --primary-colour: rgb(43, 122, 0);
-  --primary-colour-dark: rgb(18, 52, 0);
-  --primary-colour-light: rgb(0, 205, 24);
-  --primary-colour-bg: rgb(20, 85, 0);
-  --primary-colour-bgV2: rgb(123, 0, 0);
-  --Secondary-colour: rgb(200, 0, 0);
-  --Secondary-colour-dark: rgb(100, 0, 0);
-  --tertiary-colour: rgb(0, 255, 183);
-  --text-colour: rgb(255, 255, 255);
-  --textv2-colour:rgb(0, 100, 25);
+  --color-primary: #0f5c2e;
+  --color-primary-dark: #073b1c;
+  --color-primary-light: #2f9e5a;
+  --color-secondary: #c81d25;
+  --color-secondary-dark: #8a1219;
+  --color-surface: #0d3d20;
+  --color-surface-alt: #6e0f14;
 }
 
 .bday-theme {
-  --primary-colour: rgb(0, 115, 172);
-  --primary-colour-dark: rgb(0, 74, 110);
-  --primary-colour-light: rgb(106, 187, 228);
-  --primary-colour-bg: rgb(255, 255, 255);
-  --primary-colour-bgV2: rgb(74, 153, 255);
-  --Secondary-colour: rgb(0, 60, 200);
-  --Secondary-colour-dark: rgb(0, 30, 100);
-  --tertiary-colour: rgb(0, 255, 229);
-  --text-colour: rgb(255, 255, 255);
-  --textv2-colour:rgb(0, 55, 100);
+  --color-primary: #0b6fb8;
+  --color-primary-dark: #094d80;
+  --color-primary-light: #4fa8e0;
+  --color-secondary: #ff3d78;
+  --color-secondary-dark: #b32255;
+  --color-surface: #063a5e;
+  --color-surface-alt: #7a0f3d;
 }
 
 body {
-  font-family: var(--font-1);
-  background: var(--background);
-  color: var(--text-colour);
+  font-family: var(--font-body);
+  background: #14161a;
+  color: var(--color-text);
   margin: 0;
-  min-height: 100vh;
 }
 
-/* Main Layout */
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Full-height layout: header + footer sit in normal flow, main-content
+   stretches to fill whatever space is left so the themed background
+   always reaches the footer, no matter how much (or little) is on the page. */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .main-content {
-  margin-top: 8rem;
-  margin-bottom: 4rem;
-  min-height: 80vh;
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-  padding: 2rem;
-  background: linear-gradient(190deg, var(--primary-colour-bg), var(--primary-colour-bgV2));
+  padding: 2.5rem 1.5rem 3rem;
+  background: linear-gradient(190deg, var(--color-surface), var(--color-surface-alt));
 }
 
 .list-page {
   width: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,71 +93,80 @@ body {
 .list-page h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: var(--text-colour);
-  text-shadow: 1px 2px 4px rgb(0, 0, 0);
+  color: var(--color-text);
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.list-page-title {
+  font-size: 1.3rem !important;
+  opacity: 0.85;
+  margin-bottom: 0.25rem !important;
+}
+
+.empty-list-message {
+  width: 90%;
+  max-width: 900px;
+  margin: 1.5rem auto;
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  font-size: 1.1rem;
 }
 
 /* COUNTDOWN CONTAINER */
 .countdown {
   width: 100%;
   max-width: 900px;
-  margin: 0rem auto;
-  padding: 1rem;
-  border-radius: 12px;
-  background: var(--Secondary-colour);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  margin: 0 auto;
+  padding: 1.25rem 1rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(155deg, var(--color-secondary), var(--color-secondary-dark));
+  box-shadow: var(--shadow-lg);
   text-align: center;
 }
 
 .countdown-title {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   margin-top: 0.1rem;
   font-size: 1.4rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #fff;
 }
 
-/* FLIP CONTAINER */
 .flip-container {
   display: flex;
   justify-content: center;
   gap: 1rem;
 }
 
-/* EACH UNIT */
 .flip-unit {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* FLIP CARD */
 .flip-card {
-  background: var(--primary-colour-dark);
+  background: rgba(0, 0, 0, 0.35);
   color: #fff;
   font-size: 2.2rem;
   font-weight: bold;
   padding: 0.5rem 1rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   min-width: 70px;
   text-align: center;
-
-  box-shadow: inset 0 -4px 0 rgba(0,0,0,0.5),
-              0 6px 10px rgba(0,0,0,0.5);
-
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.4), 0 6px 10px rgba(0, 0, 0, 0.4);
   animation: flip 0.6s ease;
 }
 
-/* LABEL */
 .flip-label {
   margin-top: 0.4rem;
   font-size: 0.75rem;
   text-transform: uppercase;
-  color: #ccc;
+  color: rgba(255, 255, 255, 0.8);
   letter-spacing: 1px;
 }
 
-/* FLIP ANIMATION */
 @keyframes flip {
   0% {
     transform: rotateX(90deg);
@@ -146,81 +178,117 @@ body {
   }
 }
 
+/* Sorting / action controls */
+.list-controls {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.export-button {
+  margin-left: auto;
+}
+
 /* 🎁 Table Styles */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .list-table {
   width: 95%;
   max-width: 1500px;
   margin: 0.5rem auto;
   border-collapse: collapse;
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.97);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-md);
   color: #222;
   text-align: center;
-  transition: transform 0.2s ease;
 }
 
 .list-table th,
 .list-table td {
-  padding: 1.5rem;
-  border-bottom: 2px solid var(--Secondary-colour);
-  font-family: var(--font-2);
+  padding: 1.25rem;
+  border-bottom: 1px solid #e5e5e5;
+  font-family: var(--font-body);
 }
 
 .list-table th {
-  background: linear-gradient(to bottom, var(--primary-colour), var(--primary-colour-dark));
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-primary-dark));
   color: white;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 700;
 }
 
 .list-table td {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  text-transform: uppercase;
 }
 
-/* Row colors */
-.list-table tr:nth-child(even),
-.list-table tr:nth-child(odd) {
+.list-table tbody tr {
   background-color: #ffffff;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-/* Hover effect */
-.list-table tr:hover {
-  background-color: var(--Secondary-colour-dark);
+.list-table tbody tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+.list-table tbody tr:hover {
+  background-color: var(--color-secondary);
   color: white;
-  transform: scale(1.05);
-  transition: all 0.2s ease;
+  transform: scale(1.02);
 }
 
-/* 🎄 Sorting Buttons */
-.list-page button {
-  background: linear-gradient(to bottom, var(--primary-colour), var(--primary-colour-dark));
+/* Rows that link out to a shop */
+.gift-row-link-wrapper {
+  text-decoration: none;
+  color: inherit;
+  display: contents;
+}
+
+.gift-row-link {
+  cursor: pointer;
+}
+
+/* 🎄 Buttons */
+.list-page button,
+.past-list-card-header {
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-primary-dark));
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 0.7rem 1.4rem;
   font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 3px 8px rgb(0, 0, 0);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: var(--shadow-sm);
 }
 
-.list-page button:hover {
-  background: linear-gradient(to bottom, var(--Secondary-colour), var(--Secondary-colour-dark));
+.list-page button:hover,
+.past-list-card-header:hover {
+  background: linear-gradient(to bottom, var(--color-secondary), var(--color-secondary-dark));
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-md);
 }
 
-.list-page button:active {
+.list-page button:active,
+.past-list-card-header:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-sm);
+}
+
+.list-page button.active {
+  background: linear-gradient(to bottom, var(--color-accent), var(--color-accent-dark));
+  color: var(--color-text-on-accent);
 }
 
 /* 🧧 Gift Name & Description */
@@ -229,16 +297,14 @@ body {
   vertical-align: middle;
 }
 
-.gift-name,
-.gift-description {
-  display: block;
-  transition: color 0.2s ease, opacity 0.2s ease;
-}
-
 .gift-name {
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .gift-description {
@@ -246,29 +312,13 @@ body {
   color: #555;
   margin-top: 0.3rem;
   font-style: italic;
-  text-transform: none;
   opacity: 0.9;
 }
 
-/* Make both turn white when hovered */
 .list-table tr:hover .gift-name,
 .list-table tr:hover .gift-description {
   color: white;
   opacity: 1;
-}
-
-.new-tag {
-  margin-left: 0.5rem;
-  background-color: var(--tertiary-colour);
-  color: var(--textv2-colour);
-  font-size: 0.90rem;
-  font-weight: 900;
-  padding: 0.15rem 0.45rem;
-  border-radius: 0.4rem;
-  display: inline-block;
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
-  box-shadow: 0 2px 4px var(--primary-colour-dark);
 }
 
 @keyframes newPulse {
@@ -278,21 +328,109 @@ body {
 }
 
 .new-tag {
+  margin-left: 0.5rem;
+  background-color: var(--color-accent);
+  color: var(--color-text-on-accent);
+  font-size: 0.8rem;
+  font-weight: 900;
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.4rem;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   animation: newPulse 1.6s ease-in-out infinite;
 }
 
-
-/* ✅ Make name + NEW tag align cleanly */
-.gift-name {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.4rem;
+/* Smoothly animates open/closed without knowing the content's height in advance. */
+.collapsible {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+  width: 100%;
 }
 
+.collapsible.open {
+  grid-template-rows: 1fr;
+}
+
+.collapsible-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.chevron {
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.chevron.open {
+  transform: rotate(90deg);
+}
+
+/* 📜 Past Lists */
+.past-lists {
+  width: 100%;
+  max-width: 900px;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.past-lists-heading {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.75;
+}
+
+.past-list-card {
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.past-list-card-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: none;
+  font-size: 1rem;
+}
+
+.past-list-card-title {
+  display: flex;
+  align-items: center;
+}
+
+.past-list-count {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  font-weight: 400;
+}
+
+.past-list-card-body {
+  padding-top: 0.75rem;
+}
+
+.past-list-card-body .list-table {
+  font-size: 0.9rem;
+}
 
 /* 📱 Mobile Responsiveness */
 @media (max-width: 768px) {
+  .main-content {
+    padding: 1.5rem 1rem 2rem;
+  }
+
   .list-table {
     width: 95%;
     font-size: 0.95rem;
@@ -312,18 +450,23 @@ body {
     font-size: 0.75rem;
   }
 
-  .main-content {
-    margin-top: 10rem;
-    padding: 1rem;
-  }
-
   .list-page h2 {
     font-size: 1.6rem;
   }
 
-  .list-page button {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+  .list-page-title {
+    font-size: 1.1rem !important;
+  }
+
+  .list-page button,
+  .past-list-card-header {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+    border-radius: 5px;
+  }
+
+  .export-button {
+    margin-left: 0;
   }
 
   .flip-container {
@@ -354,12 +497,4 @@ body {
   .gift-name {
     gap: 0.3rem;
   }
-
-  .list-page button {
-    border-radius: 5px;
-    padding: 0.4rem 0.8rem;
-    font-size: 0.7rem;
-  }
-
 }
-
