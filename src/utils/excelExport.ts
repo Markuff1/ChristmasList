@@ -11,15 +11,13 @@ export async function exportGiftsToExcel(gifts: Gift[], { filename, sheetName, t
 
   const data: (string | number)[][] = [
     [title],
-    ["#", "Name", "Description", "New item?", "Price", "Shop"],
+    ["#", "Name", "Price", "Shop"],
   ];
 
   gifts.forEach((gift, index) => {
     data.push([
       index + 1,
       gift.name || "",
-      gift.description || "",
-      gift.isNew ? "Yes" : "",
       gift.price || "",
       gift.shop || "",
     ]);
@@ -28,14 +26,12 @@ export async function exportGiftsToExcel(gifts: Gift[], { filename, sheetName, t
   const worksheet = XLSX.utils.aoa_to_sheet(data);
 
   // Merge title row
-  worksheet["!merges"] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 5 } }];
+  worksheet["!merges"] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
 
   // Column widths
   worksheet["!cols"] = [
     { wch: 6 }, // #
     { wch: 30 }, // Name
-    { wch: 45 }, // Description
-    { wch: 15 }, // New item
     { wch: 12 }, // Price
     { wch: 25 }, // Shop
   ];
@@ -55,7 +51,7 @@ export async function exportGiftsToExcel(gifts: Gift[], { filename, sheetName, t
   };
 
   // Header styling
-  ["A2", "B2", "C2", "D2", "E2", "F2"].forEach((cell) => {
+  ["A2", "B2", "C2", "D2"].forEach((cell) => {
     worksheet[cell].s = {
       font: { bold: true, sz: 12 },
       alignment: { horizontal: "center", vertical: "center" },
@@ -69,7 +65,7 @@ export async function exportGiftsToExcel(gifts: Gift[], { filename, sheetName, t
 
   // Data row styling
   for (let row = 3; row <= gifts.length + 2; row++) {
-    ["A", "B", "C", "D", "E", "F"].forEach((col) => {
+    ["A", "B", "C", "D"].forEach((col) => {
       const cell = worksheet[`${col}${row}`];
       if (!cell) return;
 
@@ -79,12 +75,6 @@ export async function exportGiftsToExcel(gifts: Gift[], { filename, sheetName, t
         border: { bottom: { style: "thin", color: { rgb: "E5E5E5" } } },
       };
     });
-
-    worksheet[`C${row}`].s = {
-      alignment: { horizontal: "center", vertical: "center", wrapText: true },
-      font: { sz: 10, italic: true, color: { rgb: "666666" } },
-      border: { bottom: { style: "thin", color: { rgb: "E5E5E5" } } },
-    };
   }
 
   const workbook = XLSX.utils.book_new();
